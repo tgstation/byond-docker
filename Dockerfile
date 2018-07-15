@@ -1,7 +1,7 @@
 FROM i386/ubuntu:xenial
 
 ENV BYOND_MAJOR=512 \
-    BYOND_MINOR=1435
+    BYOND_MINOR=1436
 
 RUN apt-get update \
     && apt-get install -y \
