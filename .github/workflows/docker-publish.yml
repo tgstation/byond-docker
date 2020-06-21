@@ -34,3 +34,4 @@ jobs:
           dockerfile: Dockerfile
           buildargs: BYOND_MAJOR,BYOND_MINOR
           tags: "latest,${{ env.BYOND_VERSION }}"
+          cache: true
