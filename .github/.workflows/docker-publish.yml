@@ -1,0 +1,27 @@
+name: Docker Build
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: 0 0 * * *
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Get Latest BYOND Version
+        run: ./detect_latest_byond.sh
+
+      - name: Build and Publish to Registry
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: tgstation/byond-docker
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          dockerfile: Dockerfile
+          buildargs: BYOND_MAJOR,BYOND_MINOR
+          tags: "latest,${{ env.BYOND_VERSION }}"
