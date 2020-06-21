@@ -3,12 +3,10 @@
 Usage:
 
 ```
-# latest beta release
-FROM tgstation/byond:beta
-# latest stable release
+# latest release
 FROM tgstation/byond:latest
 # version in the format <major>.<minor>
 FROM tgstation/byond:<version>
 ```
 
-If images are missing, bug a halfop or higher on Rizon IRC @ #coderbus 
+If images are missing, bug a coder from the tgstation or #coderbus Discord
