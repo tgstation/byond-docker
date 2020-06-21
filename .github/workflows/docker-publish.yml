@@ -16,12 +16,17 @@ jobs:
       - name: Get Latest BYOND version.txt
         run: wget https://secure.byond.com/download/version.txt
 
+      - name: Set BYOND_VERSION
+        run: echo ::set-env name=BYOND_VERSION::$(cat version.txt | awk '{$1=$1};1')
+
+      - name: Set BYOND_MAJOR
+        run: echo ::set-env name=BYOND_MAJOR::$(cut -d'.' -f1 <<< $BYOND_VERSION)
+
+      - name: Set BYOND_MINOR
+        run: echo ::set-env name=BYOND_MINOR::$(cut -d'.' -f2 <<< $BYOND_VERSION)
+
       - name: Build and Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@master
-        env:
-          BYOND_VERSION: $(cat version.txt | awk '{$1=$1};1')
-          BYOND_MAJOR: $(cut -d'.' -f1 <<< $(cat version.txt))
-          BYOND_MINOR: $(cut -d'.' -f2 <<< $(cat version.txt))
         with:
           name: tgstation/byond
           username: ${{ secrets.DOCKER_USERNAME }}
