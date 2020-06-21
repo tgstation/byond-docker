@@ -20,8 +20,8 @@ jobs:
         uses: elgohr/Publish-Docker-Github-Action@master
         env:
           BYOND_VERSION: $(cat version.txt | awk '{$1=$1};1')
-          BYOND_MAJOR: "$(cut -d'.' -f1 <<< $(cat version.txt))
-          BYOND_MINOR: "$(cut -d'.' -f2 <<< $(cat version.txt))"
+          BYOND_MAJOR: $(cut -d'.' -f1 <<< $(cat version.txt))
+          BYOND_MINOR: $(cut -d'.' -f2 <<< $(cat version.txt))
         with:
           name: tgstation/byond
           username: ${{ secrets.DOCKER_USERNAME }}
