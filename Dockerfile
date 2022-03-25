@@ -1,4 +1,4 @@
-FROM i386/ubuntu:xenial
+FROM arm64v8/ubuntu:latest
 
 ARG BYOND_MAJOR
 ARG BYOND_MINOR
