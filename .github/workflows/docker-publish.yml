@@ -27,7 +27,7 @@ jobs:
         run: echo "BYOND_MINOR=$(cut -d'.' -f2 <<< $BYOND_VERSION)" >> $GITHUB_ENV
 
       - name: Build and Publish to Registry
-        uses: elgohr/Publish-Docker-Github-Action@master
+        uses: elgohr/Publish-Docker-Github-Action@v5
         with:
           name: tgstation/byond
           username: ${{ secrets.DOCKER_USERNAME }}
